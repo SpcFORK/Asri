@@ -68,6 +68,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   })
 
   Object.assign(BaseClass, BaseClass.prototype)
+
+  if (BaseClass.PageTitle) document.title = BaseClass.PageTitle;
+  
   // ---
 
   if (BaseClass.prototype instanceof HTMLElement) {
