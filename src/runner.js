@@ -79,11 +79,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     entry.appendChild(main);
   }
 
+  let preloadedData;
   if (BaseClass?.preload instanceof Function) {
-    await BaseClass.preload(entry);
+    preloadedData = await BaseClass.preload(entry);
   }
 
   let m = new BaseClass(entry);
+
+  preloadedData && (
+    Object.assign(m, preloadedData)
+  );
 
   // We wait for buffer
   await sleep(500)
