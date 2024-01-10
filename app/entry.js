@@ -1,11 +1,19 @@
 window.Main = class Main {
 
+  /*
+    This class automatically inherits:
+      - The entry element,
+      - The page pathname,
+      - The file location.
+
+    this.entry, this.path, this.entryPath,
+  */
+
   static preload() {
-    // console.log(this.entry)
+
   }
 
   constructor(entry) {
-    // console.log(this.entry)
     entry
   }
 
