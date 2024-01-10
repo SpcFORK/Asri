@@ -3480,11 +3480,7 @@ class Grecha {
               preloadedData = await BaseClass.preload(entry);
             }
 
-            let m = new BaseClass(entry);
-
-            preloadedData && (
-              Object.assign(m, preloadedData)
-            );
+            let m = new BaseClass(entry, preloadedData);
 
             // We wait for buffer
             await sleep(500)
