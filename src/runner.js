@@ -105,3 +105,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   blackFG.remove();
 
 })
+
+// ---
+
+// Dependantless since 2021.
