@@ -14,7 +14,7 @@ window.Main = class Main {
   }
 
   constructor(entry) {
-    entry
+    
   }
 
 }
