@@ -9,7 +9,7 @@ window.Main = class Main {
     this.entry, this.path, this.entryPath,
   */
 
-  static preload() {
+  static async preload() {
 
   }
 
