@@ -12,6 +12,8 @@ Now, you should be able to run!!
 ```js
 window.Main = class Main {
 
+  static PageTitle = 'Main';
+
   /*
     This class automatically inherits:
       - The entry element,
