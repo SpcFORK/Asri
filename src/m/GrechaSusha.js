@@ -1050,7 +1050,7 @@ class Grecha {
             let errfn = () => {
               console.error('[GS Optimizer] Script failed to load.')
             }
-            
+
             script.onerror = errfn;
             script.onabort = errfn;
 
@@ -3389,6 +3389,7 @@ class Grecha {
           return app;
         }
       },
+
       SushaSPCA: class SushaSPCA {
         constructor() {
           // Copyright (c) 2023 SpcFORK
@@ -3461,6 +3462,9 @@ class Grecha {
             })
 
             Object.assign(BaseClass, BaseClass.prototype)
+
+            if (BaseClass.PageTitle) document.title = BaseClass.PageTitle;
+
             // ---
 
             if (BaseClass.prototype instanceof HTMLElement) {
@@ -3490,91 +3494,93 @@ class Grecha {
             blackFG.remove();
 
           })
+
+        })
+      }
+    }
+  }
+
+  // ---
+
+  // @ Class Exports
+  if(typeof module == 'undefined') {
+  Object.assign(window, windowMethods);
+}
+
+function windowOptimizer() {
+  /* A function to check for mistakes made by devs, and fix them (The logging said errors) */
+
+  // Head?
+  if (!document.head) {
+    console.error('[GS Optimizer] Head not found, Creating...');
+    document.head = document.createElement('head');
+    document.documentElement.appendChild(document.head);
+  }
+
+  // @ MetaCheck
+  let headMetas = document.head.querySelectorAll('meta');
+
+  // Create basic Metas
+  let metas = [
+    tag('meta').att$('charset', 'utf-8'),
+    tag('meta').att$('name', 'viewport').att$('content', 'width=device-width, initial-scale=1.0'),
+    tag('meta').att$('name', 'description').att$('content', 'A Grecha-Susha website.'),
+    tag('meta').att$('name', 'theme-color').att$('content', '#ff0000'),
+    tag('meta').att$('name', 'og:title').att$('content', 'Grecha-Susha'),
+    tag('meta').att$('http-equiv', 'X-UA-Compatible').att$('content', 'IE=edge'),
+    tag('meta').att$('name', 'og:description').att$('content', 'A Grecha-Susha website.'),
+    tag('meta').att$('name', 'og:image').att$('content', 'https://grecha-susha.github.io/assets/images/logo.png'),
+    tag('meta').att$('name', 'og:url').att$('content', 'https://grecha-susha.github.io/'),
+  ]
+
+  if (headMetas.length < 0) {
+    console.error('[META ERROR] Metas not found.');
+
+    // Append Metas
+    headMetas.forEach(meta => document.head.appendChild(meta));
+
+    return;
+  }
+  else {
+
+    if (headMetas.length < metas.length) {
+      console.error('[META ERROR] Metas don\'t meet standards, creating ones not found.');
+
+      // Append Metas
+      metas.forEach(meta => {
+        function create_meta(meta) {
+          console.error(`[META ERROR] Meta ${meta.str$()} doesn't exist, creating...`);
+          document.head.appendChild(meta.get$());
         }
-      }
-    }
 
-    // ---
+        if (headMetas.length < 1) {
+          create_meta(meta);
 
-    // @ Class Exports
-    if (typeof module == 'undefined') {
-      Object.assign(window, windowMethods);
-    }
-
-    function windowOptimizer() {
-      /* A function to check for mistakes made by devs, and fix them (The logging said errors) */
-
-      // Head?
-      if (!document.head) {
-        console.error('[GS Optimizer] Head not found, Creating...');
-        document.head = document.createElement('head');
-        document.documentElement.appendChild(document.head);
-      }
-
-      // @ MetaCheck
-      let headMetas = document.head.querySelectorAll('meta');
-
-      // Create basic Metas
-      let metas = [
-        tag('meta').att$('charset', 'utf-8'),
-        tag('meta').att$('name', 'viewport').att$('content', 'width=device-width, initial-scale=1.0'),
-        tag('meta').att$('name', 'description').att$('content', 'A Grecha-Susha website.'),
-        tag('meta').att$('name', 'theme-color').att$('content', '#ff0000'),
-        tag('meta').att$('name', 'og:title').att$('content', 'Grecha-Susha'),
-        tag('meta').att$('http-equiv', 'X-UA-Compatible').att$('content', 'IE=edge'),
-        tag('meta').att$('name', 'og:description').att$('content', 'A Grecha-Susha website.'),
-        tag('meta').att$('name', 'og:image').att$('content', 'https://grecha-susha.github.io/assets/images/logo.png'),
-        tag('meta').att$('name', 'og:url').att$('content', 'https://grecha-susha.github.io/'),
-      ]
-
-      if (headMetas.length < 0) {
-        console.error('[META ERROR] Metas not found.');
-
-        // Append Metas
-        headMetas.forEach(meta => document.head.appendChild(meta));
-
-        return;
-      }
-      else {
-
-        if (headMetas.length < metas.length) {
-          console.error('[META ERROR] Metas don\'t meet standards, creating ones not found.');
-
-          // Append Metas
-          metas.forEach(meta => {
-            function create_meta(meta) {
-              console.error(`[META ERROR] Meta ${meta.str$()} doesn't exist, creating...`);
-              document.head.appendChild(meta.get$());
-            }
-
-            if (headMetas.length < 1) {
+        } else {
+          headMetas.forEach(meta_ => {
+            if (meta.get$().getAttribute('name') == meta_.getAttribute('name')) {
               create_meta(meta);
-
-            } else {
-              headMetas.forEach(meta_ => {
-                if (meta.get$().getAttribute('name') == meta_.getAttribute('name')) {
-                  create_meta(meta);
-                }
-              })
             }
-
-          });
+          })
         }
 
-      }
-
-      checkForFavicon();
-
+      });
     }
 
-    function checkForFavicon() {
-      // Check for (example): '<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">'
-      let favicon = document.head.querySelector('link[rel="shortcut icon"]');
-      if (!favicon) {
-        console.error('[FAVICON ERROR] FAVICON not found, creating...');
+  }
 
-        // Create FAVICON
-        let faviCanvas = CICOIconBuilder.drawPixelArt(`
+  checkForFavicon();
+
+}
+
+function checkForFavicon() {
+  // Check for (example): '<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">'
+  let favicon = document.head.querySelector('link[rel="shortcut icon"]');
+  if (!favicon) {
+    console.error('[FAVICON ERROR] FAVICON not found, creating...');
+
+    // Create FAVICON
+    let faviCanvas = CICOIconBuilder.drawPixelArt(`
         gg0gggggggggggggg0gg
         gg00gggggggggggg00gg
         gg000gggggggggg000gg
@@ -3589,23 +3595,23 @@ class Grecha {
         bbbrrrrr0000rrrrrbbb
         `.trim().replace(/ /g, ''), 3)
 
-        let faviURL = CICOIconBuilder.canvasToDataURI(faviCanvas);
+    let faviURL = CICOIconBuilder.canvasToDataURI(faviCanvas);
 
-        let link = tag('link')
-          .att$('rel', 'shortcut icon')
-          .att$('type', 'image/x-icon')
-          .att$('href', faviURL)
-          .get$()
+    let link = tag('link')
+      .att$('rel', 'shortcut icon')
+      .att$('type', 'image/x-icon')
+      .att$('href', faviURL)
+      .get$()
 
-        document.head.appendChild(link);
+    document.head.appendChild(link);
 
-        faviCanvas.remove();
-      }
-    }
+    faviCanvas.remove();
+  }
+}
 
-    windowOptimizer();
+windowOptimizer();
 
-    document.addEventListener('DOMContentLoaded', hydrate)
+document.addEventListener('DOMContentLoaded', hydrate)
 
   }
 }
