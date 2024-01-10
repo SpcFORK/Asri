@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.warn(`Failed to Fetch from ${entryPath}!`, r, e);
     return;
   }
-    
+
   finally {
     console.warn(`Loaded ${entryPath}!!`, r);
   }
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   Object.assign(BaseClass, BaseClass.prototype)
 
   if (BaseClass.PageTitle) document.title = BaseClass.PageTitle;
-  
+
   // ---
 
   if (BaseClass.prototype instanceof HTMLElement) {
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   if (BaseClass?.preload instanceof Function) {
-    await BaseClass.preload();
+    await BaseClass.preload(entry);
   }
 
   let m = new BaseClass(entry);
