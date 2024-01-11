@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   var
     entry = document.querySelector('entry'),
     path = location.pathname,
-    entryPath = `./app/${path.replace(/(\/$)|[^]($)(?=\1)/, '/entry').replace(/^\//, '')}.js`
+    entryPath = `app/${path.replace(/(\/$)|[^]($)(?=\1)/, '/entry').replace(/^\//, '')}.js`
 
   if (!entry) return;
 
