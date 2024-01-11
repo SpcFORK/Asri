@@ -5,7 +5,7 @@ class Grecha {
 
   static vampire = // A Dynamic class mashing system system
     {
-      stealMethods(target, ...source) {
+      stealMethods(target, ...source) { 
         for (const key of source) {
           // Object.getOwnPropertyNames(source[key]).forEach((prop) => {
           //   if (typeof source[prop] === 'function') {
@@ -1011,7 +1011,7 @@ class Grecha {
 
         if ((ENV_ == 'Web') || (ENV_ == 'ESM')) {
 
-          if (globalThis.location?.href) {
+          if (globalThis.location?.origin + "/") { 
             if (url.startsWith('/') || url.startsWith('./')) {
               url = location.href + url.split('/').slice(1).join('/')
             } else if (url.startsWith('../')) {
