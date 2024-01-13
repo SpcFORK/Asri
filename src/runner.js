@@ -18,6 +18,22 @@ var
 
 // ---
 
+var pageLoadedIcon = window.pageLoadedIcon = div()
+  .id$(`page-loaded-icon`)
+  .style$({
+    position: 'fixed',
+    bottom: '30px',
+    left: '30px',
+    width: '50px',
+    height: '50px',
+    background: 'url(img/loading.gif)',
+    'background-size': 'contain',
+    'background-repeat': 'no-repeat',
+    'background-position': 'center',
+  })
+
+document.body.appendChild(pageLoadedIcon.get$())
+
 document.addEventListener('DOMContentLoaded', async () => {
 
   var
@@ -30,6 +46,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   // ---
 
   console.warn(`Loading ${entryPath}...`);
+
+  fadeIn(pageLoadedIcon.get$())
 
   try {
     var r = await import_(entryPath, 'Main');
@@ -100,6 +118,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   await sleep(amm * 1000);
   blackFG.remove();
 
+  await sleep(1e3);
+  fadeOut(pageLoadedIcon.get$())
 })
 
 // ---
