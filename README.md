@@ -1,6 +1,6 @@
-# ASRI
+# Asrı
 
-## Using Asri
+## Using Asrı
 It's very simple,
 
 Every page with `runner.js` loads a script which loads the page locations entry file in `app/`.
