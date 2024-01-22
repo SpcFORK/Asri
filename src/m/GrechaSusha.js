@@ -1012,7 +1012,7 @@ class Grecha {
         if ((ENV_ == 'Web') || (ENV_ == 'ESM')) {
 
           if (globalThis.location?.href) {  
-            
+
             if (url.startsWith('../')) {
               let split = url.split('/')
               split.splice(0, 2)
