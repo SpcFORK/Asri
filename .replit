@@ -1,4 +1,4 @@
-hidden=[".config", "src"]
+hidden=[".config", "src", "img"]
 
 # hosting is currently hardcoded for this language
 # [hosting]
