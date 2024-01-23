@@ -143,7 +143,13 @@ window.Main = class Main {
           a(b('GITHUB'))
             .att$('target', '_blank')
             .att$('href', 'https://github.com/SpcFORK/Asri')
-        )
+        ),
+        
+        li(
+          a(b('DISCORD'))
+            .att$('target', '_blank')
+            .att$('href', 'https://discord.gg/' + atob('QmZ4S1Z2c2E4VQ=='))
+        ),
       ),
 
       pre('Or, read the source code!')
