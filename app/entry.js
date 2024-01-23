@@ -11,7 +11,7 @@ window.Main = class Main {
 
   static magicI = 'ı'
   static name = `Asr${Main.magicI}`
-  static version = '0.0.3 - The Normal update'
+  static version = '0.0.3 - The Normal Update'
 
   static PageTitle = Main.name
 
@@ -78,10 +78,10 @@ window.Main = class Main {
     })
 
   buttonBar = div(
-    
+
     this.srcButton,
     this.fileButton
-    
+
   ).style$({
     display: 'flex',
     justifyContent: 'center',
@@ -111,12 +111,46 @@ window.Main = class Main {
   struct2 = div(
     section(
 
-      h1('What is Asri?')
+      h1('What is Asri?'),
+      hr(),
+
+      h3('A simple solution.'),
+
+      pre('Asri allows for users to make pages quickly and dynamically, \nwhile keeping the codebase small and simple.'),
+
+      hr(),
+
+      h3('How?'),
+      pre('The libraries featured in Asri allow for the user to create \npages quickly and dynamically, while keeping the codebase small and simple.'),
+
+      hr(),
+      p(b('To do this; we leverage')),
+
+      ul(
+        li('ChubML'),
+        li('Grecha Susha'),
+        li('Asri Runner')
+      ),
+
+      hr(),
+
+      h3('More'),
+
+      pre('To learn more about Asri outside of this page, check out our'),
+
+      ul(
+        li(
+          a(b('GITHUB'))
+            .att$('target', '_blank')
+            .att$('href', 'https://github.com/SpcFORK/Asri')
+        )
+      ),
+
+      pre('Or, read the source code!')
 
     ).style$({
       ...Main.centerStyle,
       fontSize: '1em',
-      transform: 'translate(-50%, -65%)',
       top: '150%'
     })
   )
