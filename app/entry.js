@@ -11,7 +11,7 @@ window.Main = class Main {
 
   static magicI = 'ı'
   static name = `Asr${Main.magicI}`
-  static version = '0.0.3 - The Normal Update'
+  static version = '0.0.4 - The Mjs Preloading Update'
 
   static PageTitle = Main.name
 
@@ -144,7 +144,7 @@ window.Main = class Main {
             .att$('target', '_blank')
             .att$('href', 'https://github.com/SpcFORK/Asri')
         ),
-        
+
         li(
           a(b('DISCORD'))
             .att$('target', '_blank')
@@ -178,9 +178,25 @@ window.Main = class Main {
 
   constructor(entry) {
     entry.append(
-      this.struct1.get$(),
-      this.struct2.get$(),
-      this.footer.get$()
+      router({
+        '/': () => div(
+          this.struct1.get$().cloneNode(true),
+          this.struct2.get$().cloneNode(true),
+          this.footer.get$().cloneNode(true)
+        ),
+
+        '/docs': () => div(
+          h1('Docs'),
+          hr(),
+          pre('Coming soon, check back on this later!\n\n- SpcFORK'),
+          this.footer
+            .style$({
+              top: '97%',
+            })
+            .get$()
+            .cloneNode(true)
+        ),
+      })
     )
   }
 

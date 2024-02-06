@@ -63,6 +63,23 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // ---
+  // @@ SUBM
+  
+  let submodules = [
+    './asri.subm/default.js'
+  ]
+
+  for (let i = 0; i < submodules.length; i++) {
+    try {
+      await import(submodules[i]);
+    }
+
+    catch (e) {
+      console.warn(`Failed to Fetch from ${submodules[i]}!`, e);
+    }
+  }
+  
+  // ---
 
   let MainClass =
     window?.Main

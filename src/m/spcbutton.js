@@ -14,7 +14,7 @@
   nobadge = '', // When true, the badge will not be added, but the function will.
 ) {
   // Suppress badge in ReplView
-  if (window.location.hostname.split('.')[1] === 'id') {
+  if (window.location.hostname.endsWith('dev')) {
     return;
   }
 

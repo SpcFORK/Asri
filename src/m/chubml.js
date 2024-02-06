@@ -2715,7 +2715,7 @@ switch (checkEnvironment()) {
 
 async function fetchRouteFolder(route) {
 
-  let webver = async (_route) => {
+  let Swebver = async (_route) => {
     let
       _res = await findFile([`${_route}/chub.ware`])
       , _res_multiware = await findFile([`${_route}/chub.multi.ware`])
