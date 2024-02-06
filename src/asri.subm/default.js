@@ -11,3 +11,4 @@ window.default$ = window.SushaWrapper.default$ = async function(i = '') {
     default:
       return m;
   }
+}
