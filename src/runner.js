@@ -64,21 +64,49 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // ---
   // @@ SUBM
-  
-  let submodules = [
-    './asri.subm/default.js'
-  ]
+  {
+    let submodules = [
+      '3rdp/adviceSlipAPI',
+      '3rdp/loremGen',
+      '3rdp/qrGen',
+      '3rdp/randomUser',
+      '3rdp/books',
+      '3rdp/chuckNorris',
 
-  for (let i = 0; i < submodules.length; i++) {
-    try {
-      await import(submodules[i]);
-    }
+      'arrayMod/binSearch',
+      'arrayMod/chunkArr',
+      'arrayMod/flattenArr',
+      'arrayMod/shuffleArr',
+      'arrayMod/uniqueArr',
+      
+      'debounce',
+      'deepclone',
+      'default',
+      'dropdown',
+      'formatDate',
+      'getLanguage',
+      'isDarkmode',
+      'isMobileDevice',
+      'levenshteinDistance',
+      'mergeObjs',
+      'randomInRange',
+      'retry',
+      'scrollTo',
+      'throttle',
+      'type',
+      'uuid'
+    ];
 
-    catch (e) {
-      console.warn(`Failed to Fetch from ${submodules[i]}!`, e);
+    for (let i = 0; i < submodules.length; i++) {
+      try {
+        await import('./asri.subm/' + submodules[i] + '.js');
+      }
+
+      catch (e) {
+        console.warn(`Failed to Fetch from ${submodules[i]}!`, e);
+      }
     }
   }
-  
   // ---
 
   let MainClass =
