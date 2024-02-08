@@ -14,9 +14,8 @@
   nobadge = '', // When true, the badge will not be added, but the function will.
 ) {
   // Suppress badge in ReplView
-  if (window.location.hostname.endsWith('dev')) {
-    return;
-  }
+  let isIframe = window.location !== window.parent.location;
+  if (isIframe) return;
 
   if (nobadge) {
     return replitBadge;

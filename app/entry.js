@@ -19,6 +19,10 @@ window.Main = class Main {
     pageLoadedIcon.style$({
       'border-radius': '25%',
     })
+
+    return {
+      a: await loadExtendLib()
+    }
   }
 
   static vv = visualViewport

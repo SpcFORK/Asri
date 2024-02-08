@@ -65,20 +65,24 @@ document.addEventListener('DOMContentLoaded', async () => {
   // ---
   // @@ SUBM
   {
-    let submodules = [
-      '3rdp/adviceSlipAPI',
-      '3rdp/loremGen',
-      '3rdp/qrGen',
-      '3rdp/randomUser',
-      '3rdp/books',
-      '3rdp/chuckNorris',
+    let thirdparty = [
+      'adviceSlipAPI',
+      'loremGen',
+      'qrGen',
+      'randomUser',
+      'books',
+      'chuckNorris',
+    ]
 
-      'arrayMod/binSearch',
-      'arrayMod/chunkArr',
-      'arrayMod/flattenArr',
-      'arrayMod/shuffleArr',
-      'arrayMod/uniqueArr',
-      
+    let arrManip = [
+      'binSearch',
+      'chunkArr',
+      'flattenArr',
+      'shuffleArr',
+      'uniqueArr'
+    ]
+
+    let submodules = [
       'debounce',
       'deepclone',
       'default',
@@ -97,15 +101,26 @@ document.addEventListener('DOMContentLoaded', async () => {
       'uuid'
     ];
 
-    for (let i = 0; i < submodules.length; i++) {
-      try {
-        await import('./asri.subm/' + submodules[i] + '.js');
-      }
+    const
+      specImp = (pre, next) => _ => import(`./${pre}/${_}${next}`),
+      
+      asriFolder = specImp('asri.subm', '.js'),
+      threePFolder = specImp('asri.subm/3rdp', '.js'),
+      arrayMod = specImp('asri.subm/arrayMod', '.js'),
+      
+      mapCycle = (_ = [], fn = () => { }) => _.map(submodule => fn(submodule))
 
-      catch (e) {
-        console.warn(`Failed to Fetch from ${submodules[i]}!`, e);
-      }
-    }
+    window.loadExtendLib = _ => Promise.all(
+      mapCycle(submodules, asriFolder)
+    )
+
+    window.load3pLib = _ => Promise.all(
+      mapCycle(thirdparty, threePFolder)
+    )
+
+    window.loadArrayModLib = _ => Promise.all(
+      mapCycle(arrManip, arrayMod)
+    )
   }
   // ---
 
