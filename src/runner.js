@@ -63,6 +63,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // ---
+  // @@ CHUB ROUTER
+  {
+    let
+    ch_susha_loc = `/src/m/susha_chubml.js`,
+    ch_susha = import(ch_susha_loc)
+      .catch(e => console.warn(`Failed to Fetch from ${ch_susha_loc}`, e))
+  }
+
+  // ---
   // @@ SUBM
   {
     let thirdparty = [
@@ -103,11 +112,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const
       specImp = (pre, next) => _ => import(`/src/${pre}/${_}${next}`),
-      
+
       asriFolder = specImp('asri.subm', '.js'),
       threePFolder = specImp('asri.subm/3rdp', '.js'),
       arrayMod = specImp('asri.subm/arrayMod', '.js'),
-      
+
       mapCycle = (_ = [], fn = () => { }) => _.map(submodule => fn(submodule))
 
     window.loadExtendLib = _ => Promise.all(
