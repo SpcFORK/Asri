@@ -1,6 +1,6 @@
 # Susha 101 - Why Susha is Good
 
-![image](image.png)
+![image](.imgs/image.png)
 
 When we use Susha, we can use tags to wrap our elements in the SushaWrapper.
 
@@ -13,7 +13,7 @@ But wait!
 
 Susha allows for a more simplistic aproach as well, oustide of the constructor!
 
-![image](image_2.png)
+![image](.imgs/image_2.png)
 
 Just with a few changes, your code becomes more readable, and grouped together.
 
