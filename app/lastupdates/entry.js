@@ -20,7 +20,7 @@ window.Main = class Main {
   }
 
   makeAforLU(url, text) {
-    return this.makeA(`/lastupdates/${url}`, text)
+    return this.makeA(`/history/lastupdates/${url}`, text)
   }
 
   links = div(
