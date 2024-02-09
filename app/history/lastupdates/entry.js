@@ -3,7 +3,9 @@ window.Main = class Main {
   static PageTitle = 'Main';
 
   static async preload() {
-
+    pageLoadedIcon.style$({
+      'border-radius': '25%',
+    })
   }
 
   static vv = visualViewport

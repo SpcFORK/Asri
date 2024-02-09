@@ -20,9 +20,9 @@ window.Main = class Main {
       'border-radius': '25%',
     })
 
-    return {
-      a: await loadExtendLib()
-    }
+    // return {
+    //   a: await loadExtendLib()
+    // }
   }
 
   static vv = visualViewport
