@@ -1,3 +1,10 @@
+/**
+ * Attempts to execute a function and retries if it fails.
+ * @param {Function} func - The function to attempt.
+ * @param {number} maxAttempts - The maximum number of attempts.
+ * @param {number} delayBetweenAttempts - The delay between attempts in milliseconds.
+ * @returns {Promise} A promise that resolves with the function's result or rejects after all attempts fail.
+ */
 window.retry$ = (func, maxAttempts, delayBetweenAttempts) => {
   let
     attempts = 0,
@@ -11,6 +18,6 @@ window.retry$ = (func, maxAttempts, delayBetweenAttempts) => {
         throw error;
       });
     };
-  
+
   return tryFunction();
 };

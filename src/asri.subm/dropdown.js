@@ -1,10 +1,25 @@
 window.SushaDropdown = window.SushaWrapper.SushaDropdown = class SushaDropdown {
+  /**
+   * Represents a dropdown component.
+   */
   SushaDropdown = SushaDropdown
 
+  /**
+   * The main container element for the dropdown.
+   */
   main = div()
 
+  /**
+   * The state of the dropdown, true if open.
+   */
   state = false;
 
+  /**
+   * Constructs a SushaDropdown instance.
+   *
+   * @param {HTMLElement} top - The top element of the dropdown.
+   * @param {...HTMLElement} inners - The inner elements of the dropdown.
+   */
   constructor(top, ...inners) {
     this.topHeight = top.offsetHeight;
     this.innersHeight = inners.map(i => i.offsetHeight).reduce((a, b) => a + b, 0);
@@ -49,6 +64,9 @@ window.SushaDropdown = window.SushaWrapper.SushaDropdown = class SushaDropdown {
     this.close();
   }
 
+  /**
+   * Opens the dropdown.
+   */
   open() {
     // Open the dropdown
     this.inners.style$({
@@ -60,6 +78,9 @@ window.SushaDropdown = window.SushaWrapper.SushaDropdown = class SushaDropdown {
     this.state = true;
   }
 
+  /**
+   * Closes the dropdown.
+   */
   close() {
     // Close the dropdown
     this.inners.style$({

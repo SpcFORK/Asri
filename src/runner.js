@@ -26,7 +26,7 @@ var pageLoadedIcon = window.pageLoadedIcon = div()
     left: '30px',
     width: '50px',
     height: '50px',
-    background: 'url(img/loading.gif)',
+    background: 'url(/img/loading.gif)',
     'background-size': 'contain',
     'background-repeat': 'no-repeat',
     'background-position': 'center',
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   var
     entry = document.querySelector('entry'),
     path = location.pathname,
-    entryPath = `app/${path.replace(/(\/$)|[^]($)(?=\1)/, '/entry').replace(/^\//, '')}.js`
+    entryPath = `/app/${path.replace(/(\/$)|[^]($)(?=\1)/, '/entry').replace(/^\//, '')}.js`
 
   if (!entry) return;
 
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     ];
 
     const
-      specImp = (pre, next) => _ => import(`./${pre}/${_}${next}`),
+      specImp = (pre, next) => _ => import(`/src/${pre}/${_}${next}`),
       
       asriFolder = specImp('asri.subm', '.js'),
       threePFolder = specImp('asri.subm/3rdp', '.js'),

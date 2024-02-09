@@ -1,5 +1,7 @@
 window.Main = class Main {
 
+  // ** THIS IS A TEMPLATE ** //
+  
   // This class automatically inherits:
   //   - The entry element,
   //   - The page pathname,

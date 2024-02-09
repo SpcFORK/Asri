@@ -1,14 +1,30 @@
 window.QRCodeGenerator = window.SushaWrapper.QRCodeGenerator = class QRCodeGenerator {
+  /**
+   * Creates an instance of QRCodeGenerator.
+   * @param {string} [apiBaseUrl='http://api.qrserver.com/v1/create-qr-code/'] - The base URL of the QR code API.
+   */
   constructor(apiBaseUrl) {
     this.apiBaseUrl = apiBaseUrl || 'http://api.qrserver.com/v1/create-qr-code/';
   }
 
+  /**
+   * Generates a URL for a QR code with the given data and options.
+   * @param {string} data - The data to encode in the QR code.
+   * @param {Object} [options={}] - Additional options for the QR code generation.
+   * @returns {string} The URL to the generated QR code.
+   */
   generateQRCode(data, options = {}) {
     const queryParams = this._buildQueryParams(data, options);
     const url = `${this.apiBaseUrl}?${queryParams}`;
     return url;
   }
 
+  /**
+   * Builds the query parameters string for the QR code URL based on data and options.
+   * @param {string} data - The data to encode.
+   * @param {Object} options - The options for the QR code generation.
+   * @returns {string} The query parameters string.
+   */
   _buildQueryParams(data, options) {
     const params = new URLSearchParams();
     params.append('data', encodeURIComponent(data));

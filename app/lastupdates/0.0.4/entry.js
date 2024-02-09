@@ -11,7 +11,7 @@ window.Main = class Main {
 
   static magicI = 'ı'
   static name = `Asr${Main.magicI}`
-  static version = '0.0.6 - The Redirect Update'
+  static version = '0.0.4 - The Mjs Preloading Update'
 
   static PageTitle = Main.name
 
@@ -56,41 +56,20 @@ window.Main = class Main {
   art1Text = p()
     .html$(Main.arrStr(
       'Welcome to Asri,',
-
       '',
-
       'A starter for simple SpcFORKit websites.',
       'It is a simple, yet powerful,',
-
       '',
-
       div(
         hr(),
         h2(`v${Main.version}`),
         hr()
       ).outerHTML,
-
-      "Recently, we've have added:",
-
+      'This update, we have added:',
       ul(
-        li('A new, simple, and easy to use MJS support bridge.'),
-        li('A complex Extended Susha-Subm Library'),
-        li(
-          'Page Redirect Clientware JSONS.',
-          br(),
-          br(),
-
-          code().html$(Main.arrStr(
-            "  Now Asri pages/scripts can just import `/src/redirect.js`,",
-            "  and it will call this routine; getting the `title` & `url`,",
-            "  which can have a redirect JSON in the route, or `/app/redirects/{{URL PATH}}/redirect.json`",
-            "  best for pages with a slight error in the pathname and needs quick fix"
-          ))
-        )
+        li('A new, simple, and easy to use MJS support.')
       ).outerHTML,
-
       i('Be on the lookout for more ', b('frequent'), ' updates in the future.').outerHTML,
-
       '',
     ));
 
@@ -105,7 +84,7 @@ window.Main = class Main {
     .html$('Source Code')
 
   fileButton = button('File')
-    .att$('onclick', ` window.open("src/m/GrechaSusha.js", window.location) `)
+    .att$('onclick', ` window.open("/src/m/GrechaSusha.js", window.location) `)
     .att$('type', 'button')
     .html$('File')
     .style$({
@@ -139,7 +118,7 @@ window.Main = class Main {
     ).style$({
       ...Main.centerStyle,
       fontSize: '1em',
-      transform: 'translate(-50%, -60%)',
+      transform: 'translate(-50%, -65%)',
     }),
   )
 

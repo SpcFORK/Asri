@@ -1,3 +1,9 @@
+/**
+ * Performs a binary search on a sorted array to find the index of a target element.
+ * @param {Array} array - The sorted array to search within.
+ * @param {*} target - The element to search for.
+ * @returns {number} The index of the target element if found, otherwise -1.
+ */
 window.binarySearch$ = (array, target) => {
   let 
     left = 0,

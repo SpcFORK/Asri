@@ -1,3 +1,9 @@
+/**
+ * Formats a date object into a string according to the given format.
+ * @param {Date} date - The date object to format.
+ * @param {string} [format='YYYY-MM-DD'] - The format string.
+ * @returns {string} The formatted date string.
+ */
 window.formatDate$ = (date, format = 'YYYY-MM-DD') => {
   const
     padZero = num => (num < 10 ? '0' : '') + num,

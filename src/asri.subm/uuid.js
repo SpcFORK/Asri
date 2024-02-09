@@ -1,3 +1,7 @@
+/**
+ * Generates a pseudo-random UUID (Universally Unique Identifier).
+ * @returns {string} A string representing the UUID.
+ */
 window.generateUUID$ = _ => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
   .replace(/[xy]/g, c => {
     const 
