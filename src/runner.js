@@ -66,9 +66,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   // @@ CHUB ROUTER
   {
     let
-    ch_susha_loc = `/src/m/susha_chubml.js`,
-    ch_susha = import(ch_susha_loc)
-      .catch(e => console.warn(`Failed to Fetch from ${ch_susha_loc}`, e))
+      ch_susha_loc = `/src/m/susha_chubml.js`,
+      ch_susha = await import(ch_susha_loc)
+        .catch(e => console.warn(`Failed to Fetch from ${ch_susha_loc}`, e))
+  }
+
+  // ---
+  // @@ SUSHA to REACT
+  {
+    let
+      susha_rjsx_loc = `/src/m/susha_reactObj.js`,
+      susha_rjsx = await import(susha_rjsx_loc)
+        .catch(e => console.warn(`Failed to Fetch from ${susha_rjsx_loc}`, e))
   }
 
   // ---
