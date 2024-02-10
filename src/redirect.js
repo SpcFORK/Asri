@@ -22,15 +22,17 @@
   async function redirect(url = '', pth = '') {
     try {
       currTEXT = 'Fetching'
-      let poj = await fetch(`${url}/redirect.json`)
+      let url_ = new URL(`${location.origin}${url}/redirect.json`)
+      let poj = await fetch(url_.href)
       currTEXT = 'Got Fetch'
       let poj_ = await poj.json()
 
-      if ((pth.length > 0) && (pth instanceof String)) {
-        let o_ = poj_.find(p => p.path === pth)
+      if ((pth.length > 0) && !!pth) {
+        let entries = Object.entries(poj_)
+        let entry = entries.find(e => e[0] == pth)
 
-        if (o_) {
-          poj_ = o_
+        if (entry) {
+          poj_ = entry[1]
         }
 
         else {
@@ -96,10 +98,10 @@
       console.log(res0)
       if (res0) return;
 
-      let res1 = await redirect(`/app/${path}`)
+      let res1 = await redirect(`/app${path}`)
       if (res1) return;
 
-      let res2 = await redirect(`/app/redirects/${path}`)
+      let res2 = await redirect(`/app/redirects${path}`)
       if (res2) return;
     }
 
