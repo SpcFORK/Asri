@@ -94,7 +94,7 @@
     {
       let res0 = await redirect(`/app`, path)
       console.log(res0)
-      if (!res0) return;
+      if (res0) return;
 
       let res1 = await redirect(`/app/${path}`)
       if (res1) return;
