@@ -11,7 +11,7 @@ window.Main = class Main {
 
   static magicI = 'ı'
   static name = `Asr${Main.magicI}`
-  static version = '0.0.7 - The `ChubML to Susha` Update'
+  static version = '0.0.6 - The Redirect Update'
 
   static PageTitle = Main.name
 
@@ -86,8 +86,7 @@ window.Main = class Main {
             "  which can have a redirect JSON in the route, or `/app/redirects/{{URL PATH}}/redirect.json`",
             "  best for pages with a slight error in the pathname and needs quick fix"
           ))
-        ),
-        li('A bridge for converting ChubML to Susha (SushaWrapper).')
+        )
       ).outerHTML,
 
       i('Be on the lookout for more ', b('frequent'), ' updates in the future.').outerHTML,
