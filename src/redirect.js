@@ -24,6 +24,7 @@
       currTEXT = 'Fetching'
       let url_ = new URL(`${location.origin}${url}/redirect.json`)
       let poj = await fetch(url_.href)
+      console.log(`[${path}] ${url_.href}`)
       currTEXT = 'Got Fetch'
       let poj_ = await poj.json()
 

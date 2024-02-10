@@ -2,5 +2,10 @@
   "/testMainRoute/": {
     "nav": "/",
     "title": "Redirecting to '/'"
+  },
+
+  "/_Asri%20Templates/redirect.html": {
+    "nav": "/",
+    "title": "Redirecting to '/'"
   }
 }
