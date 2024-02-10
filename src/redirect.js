@@ -27,7 +27,16 @@
       let poj_ = await poj.json()
 
       if ((pth.length > 0) && (pth instanceof String)) {
-        poj_ = poj_.find(p => p.path === pth)
+        let o_ = poj_.find(p => p.path === pth)
+
+        if (o_) {
+          poj_ = o_
+        }
+
+        else {
+          console.warn(`[ERROR] Main Redirect.json not found.`)
+          return !!0
+        }
       }
 
       currTEXT = 'Got JSON'
