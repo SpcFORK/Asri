@@ -47,6 +47,10 @@ window.SushaToReact = SushaElement => {
       reformedAttrs,
       ...[...HTMLnode.children].map(child => HTMLtoReact(child))
     )
+    
+    // "Record the component responsible for creating this element."
+    ReactNode_._owner = SushaElement;
+    
     return ReactNode_;
   }
 
