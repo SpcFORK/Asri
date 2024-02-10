@@ -5,6 +5,8 @@ window.CHUBtoHTMLNodes = text => {
   let c = p.get$().content.children
 
   if (!c) return text;
+  let element = c[0]
+  
   return [c[0].tagName, c[0].children];
 }
 

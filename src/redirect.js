@@ -19,12 +19,17 @@
     ddt_(`${currTEXT}...`)
   }
 
-  async function redirect(url = '') {
+  async function redirect(url = '', pth = '') {
     try {
       currTEXT = 'Fetching'
       let poj = await fetch(`${url}/redirect.json`)
       currTEXT = 'Got Fetch'
       let poj_ = await poj.json()
+
+      if ((pth.length > 0) && (pth instanceof String)) {
+        poj_ = poj_.find(p => p.path === pth)
+      }
+
       currTEXT = 'Got JSON'
 
       let goto = (
@@ -77,11 +82,16 @@
       }
     })
 
-    let res1 = await redirect(path)
-    if (res1) return;
+    {
+      let res0 = await redirect(`/app`)
+      if (!res0) return;
 
-    let res2 = await redirect(`/app/redirects/${path}`)
-    if (res2) return;
+      let res1 = await redirect(`/app/${path}`)
+      if (res1) return;
+
+      let res2 = await redirect(`/app/redirects/${path}`)
+      if (res2) return;
+    }
 
     console.warn(`[ERROR] No redirect found for ${path}`)
   }
