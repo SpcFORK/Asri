@@ -78,13 +78,15 @@ window.Main = class Main {
         li(
           'Page Redirect Clientware JSONS.',
           br(),
-          br(),
 
-          code().html$(Main.arrStr(
-            "  Now Asri pages/scripts can just import `/src/redirect.js`,",
-            "  and it will call this routine; getting the `title` & `url`,",
-            "  which can have a redirect JSON in the route, or `/app/redirects/{{URL PATH}}/redirect.json`",
-            "  best for pages with a slight error in the pathname and needs quick fix"
+          pre().html$(Main.arrStr(
+            "  -  Now Asri pages/scripts can just import `/src/redirect.js`,",
+            "     and it will call this routine; getting the `title` & `url`,",
+            "",
+            "     which can have a redirect JSON in the route,",
+            "     or `/app/redirects/{{URL PATH}}/redirect.json`",
+            "",
+            "     best for pages with a slight error in the pathname and needs quick fix",
           ))
         ),
         li('A bridge for converting ChubML to Susha (SushaWrapper).')
@@ -140,7 +142,7 @@ window.Main = class Main {
     ).style$({
       ...Main.centerStyle,
       fontSize: '1em',
-      transform: 'translate(-50%, -60%)',
+      transform: 'translate(-50%, -55%)',
     }),
   )
 
