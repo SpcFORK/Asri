@@ -92,7 +92,8 @@
     })
 
     {
-      let res0 = await redirect(`/app`)
+      let res0 = await redirect(`/app`, path)
+      console.log(res0)
       if (!res0) return;
 
       let res1 = await redirect(`/app/${path}`)
