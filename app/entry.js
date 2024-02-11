@@ -20,9 +20,9 @@ window.Main = class Main {
       'border-radius': '25%',
     })
 
-    // return {
-    //   a: await loadExtendLib()
-    // }
+    return [
+      await addStringInvoke()
+    ]
   }
 
   static vv = visualViewport
@@ -103,16 +103,43 @@ window.Main = class Main {
   );
 
   srcButton = button('Source Code')
-    .att$('onclick', ' window.open("https://github.com/SpcFORK/Asri") ')
+    .att$(
+      'onclick',
+      stringInvoke(_ => {
+        window.open("https://github.com/SpcFORK/Asri")
+      })
+    )
     .att$('type', 'button')
     .html$('Source Code')
 
   fileButton = button('File')
-    .att$('onclick', ` window.open("src/m/GrechaSusha.js", window.location) `)
+    .att$(
+      'onclick',
+      stringInvoke(_ => {
+        window.open("src/m/GrechaSusha.js", window.location)
+      })
+    )
     .att$('type', 'button')
     .html$('File')
     .style$({
       'background-color': '#aaa3',
+    })
+
+  ReplButton = button('Make Repl')
+    .att$(
+      'onclick',
+      stringInvoke(_ => {
+        window.open(
+        'https://replit.com/new?tab=replit&language=html&template=160910a4-5017-4602-81e0-a948bc939a6a',
+        '_blank'
+          )
+      })
+    )
+    .att$('type', 'button')
+    .html$('Make Repl')
+    .style$({
+      'background-color': '#aaa3',
+      'margin-top': '0.5rem',
     })
 
   buttonBar = div(
@@ -139,10 +166,11 @@ window.Main = class Main {
       hr(),
 
       this.buttonBar,
+      this.ReplButton
     ).style$({
       ...Main.centerStyle,
       fontSize: '1em',
-      transform: 'translate(-50%, -55%)',
+      transform: 'translate(-50%, -53%)',
     }),
   )
 

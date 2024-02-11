@@ -69,22 +69,32 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.warn(`Loaded ${entryPath}!!`, r);
   }
 
+  const
+    specImp = (pre, next) => _ => import(`/src/${pre}/${_}${next}`),
+    mFolder = specImp("m", '.js'),
+    helperFolder = specImp("_helper", '.js')
+
   // ---
   // @@ CHUB ROUTER
   {
     let
-      ch_susha_loc = `/src/m/susha_chubml.js`,
-      ch_susha = await import(ch_susha_loc)
-        .catch(e => console.warn(`Failed to Fetch from ${ch_susha_loc}`, e))
+      ch_susha = await mFolder('susha_chubml')
+        .catch(e => console.warn(`Failed to Fetch from /m/susha_chubml.js!`, e))
   }
 
   // ---
   // @@ SUSHA to REACT
   {
     let
-      susha_rjsx_loc = `/src/m/susha_reactObj.js`,
-      susha_rjsx = await import(susha_rjsx_loc)
-        .catch(e => console.warn(`Failed to Fetch from ${susha_rjsx_loc}`, e))
+      susha_rjsx = await mFolder('susha_reactObj')
+        .catch(e => console.warn(`Failed to Fetch from /m/susha_reactObj.js!`, e))
+  }
+
+  // ---
+  // @@ StringInvoker
+  window.addStringInvoke = async _ => {
+    let strInvoker = await helperFolder('stringInvoke')
+      .catch(e => console.warn(`Failed to Fetch from /_helper/stringInvoke.js!`, e))
   }
 
   // ---
@@ -127,8 +137,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     ];
 
     const
-      specImp = (pre, next) => _ => import(`/src/${pre}/${_}${next}`),
-
       asriFolder = specImp('asri.subm', '.js'),
       threePFolder = specImp('asri.subm/3rdp', '.js'),
       arrayMod = specImp('asri.subm/arrayMod', '.js'),
