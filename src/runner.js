@@ -72,29 +72,41 @@ document.addEventListener('DOMContentLoaded', async () => {
   const
     specImp = (pre, next) => _ => import(`/src/${pre}/${_}${next}`),
     mFolder = specImp("m", '.js'),
-    helperFolder = specImp("_helper", '.js')
+    helperFolder = specImp("_helper", '.js'),
+
+    errorForModules =
+      _ => e => console.warn(`Failed to Fetch from /m/${_}.js!`, e)
 
   // ---
   // @@ CHUB ROUTER
   {
-    let
-      ch_susha = await mFolder('susha_chubml')
-        .catch(e => console.warn(`Failed to Fetch from /m/susha_chubml.js!`, e))
+    let ch_susha = 'susha_chubml'
+    await mFolder(ch_susha)
+      .catch(e => errorForModules(ch_susha))
   }
 
   // ---
   // @@ SUSHA to REACT
   {
-    let
-      susha_rjsx = await mFolder('susha_reactObj')
-        .catch(e => console.warn(`Failed to Fetch from /m/susha_reactObj.js!`, e))
+    let susha_rjsx = 'susha_reactObj'
+    await mFolder(susha_rjsx)
+      .catch(e => errorForModules(susha_rjsx))
+  }
+
+  // ---
+  // @@ Susha RenderLoop
+  window.addRenderLoop = async _ => {
+    let susha_RenderLoop = 'susha_RenderLoop'
+    return await mFolder(susha_RenderLoop)
+      .catch(e => errorForModules(susha_RenderLoop))
   }
 
   // ---
   // @@ StringInvoker
   window.addStringInvoke = async _ => {
-    let strInvoker = await helperFolder('stringInvoke')
-      .catch(e => console.warn(`Failed to Fetch from /_helper/stringInvoke.js!`, e))
+    let strInvoker = 'stringInvoke'
+    return await helperFolder(strInvoker)
+      .catch(e => errorForModules(strInvoker))
   }
 
   // ---

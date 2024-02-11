@@ -11,7 +11,7 @@ window.Main = class Main {
 
   static magicI = 'ı'
   static name = `Asr${Main.magicI}`
-  static version = '0.0.8 - The `Susha to JSX` Update'
+  static version = '0.0.7 - The `ChubML to Susha` Update'
 
   static PageTitle = Main.name
 
@@ -21,8 +21,7 @@ window.Main = class Main {
     })
 
     return [
-      await addStringInvoke(),
-      await addRenderLoop()
+      await addStringInvoke()
     ]
   }
 
@@ -74,9 +73,23 @@ window.Main = class Main {
       "Recently, we've have added:",
 
       ul(
-        li('A bridge for converting ChubML to HTML to Susha (SushaWrapper).'),
-        li('A bridge for converting Susha to JSX.'),
-        li('Advanced MJS Components, and `/src/_helper/`s!!')
+        li('A new, simple, and easy to use MJS support bridge.'),
+        li('A complex Extended Susha-Subm Library'),
+        li(
+          'Page Redirect Clientware JSONS.',
+          br(),
+
+          pre().html$(Main.arrStr(
+            "  -  Now Asri pages/scripts can just import `/src/redirect.js`,",
+            "     and it will call this routine; getting the `title` & `url`,",
+            "",
+            "     which can have a redirect JSON in the route,",
+            "     or `/app/redirects/{{URL PATH}}/redirect.json`",
+            "",
+            "     best for pages with a slight error in the pathname and needs quick fix",
+          ))
+        ),
+        li('A bridge for converting ChubML to Susha (SushaWrapper).')
       ).outerHTML,
 
       i('Be on the lookout for more ', b('frequent'), ' updates in the future.').outerHTML,
@@ -117,9 +130,9 @@ window.Main = class Main {
       'onclick',
       stringInvoke(_ => {
         window.open(
-          'https://replit.com/new?tab=replit&language=html&template=160910a4-5017-4602-81e0-a948bc939a6a',
-          '_blank'
-        )
+        'https://replit.com/new?tab=replit&language=html&template=160910a4-5017-4602-81e0-a948bc939a6a',
+        '_blank'
+          )
       })
     )
     .att$('type', 'button')
@@ -157,7 +170,7 @@ window.Main = class Main {
     ).style$({
       ...Main.centerStyle,
       fontSize: '1em',
-      transform: 'translate(-50%, -55%)',
+      transform: 'translate(-50%, -53%)',
     }),
   )
 
@@ -229,15 +242,7 @@ window.Main = class Main {
 
   // ---
 
-  constructor(entry, mods) {
-    const { RenderLoop, packRenderer } = mods[1]
-
-    let ePack = window.ePack$ = packRenderer(entry)
-
-    ePack(async _ => {
-      console.log('Entry Packed!')
-    }, 100)
-
+  constructor(entry) {
     entry.append(
       router({
         '/': () => div(
